@@ -1,5 +1,5 @@
 # BibleBookStudies
-In-depth study of the 66 books in the Bible with BibleMate AI Agent Mode
+In-depth study of the 66 books in the Bible with [BibleMate AI Agent Mode](https://github.com/eliranwong/biblemate)
 
 Apply the following prompt for studying an Old Testament book:
 
