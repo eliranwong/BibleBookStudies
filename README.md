@@ -1,20 +1,53 @@
 # BibleBookStudies
-In-depth study of the 66 books in the Bible with [BibleMate AI Agent Mode](https://github.com/eliranwong/biblemate)
 
-Apply the following prompt for studying an Old Testament book:
+In-depth study of the 66 books in the Bible.
 
-```
-@@ Perform an indepth study of the book of Genesis, with the following steps in order:
+Generated with [AgentMake AI](https://github.com/eliranwong/agentmake) and Gemini 2.5 Flash
 
-1. Introduction: Use tool `write_bible_book_introduction` to establish authorship, date, and purpose.
-2. Structure: Use tool `write_bible_outline` to provide a granular, nested breakdown of the text.
-3. Logic Flow: Use tool `write_bible_thought_progression` to analyze how the author’s argument or narrative develops from beginning to end.
-4. Historical Setting: Use tool `write_old_testament_historical_context` to detail the Ancient Near Eastern (ANE) background and archeological significance.
-5. Thematic Analysis: Use tool `study_old_testament_themes` to explore recurring motifs and primary messages.
-6. Lexical Study: Use tool `identify_bible_keywords` to extract and define original language terms (Hebrew/Aramaic) critical to the book.
-7. Theological Framework: Use tool `write_bible_theology` to summarize the book's revelation about God, humanity, and the covenant.
-8. Canonical Placement: Use tool `write_bible_canonical_context` to explain how this book fits into the wider Old Testament and its relationship to the New Testament.
-9. Spiritual Reflection: Use tool `write_bible_devotion` to create heart-centered reflections rooted in the text.
-10. Practical Living: Use tool `write_bible_applications` to provide actionable, daily life-application points for the modern reader.
+## How it works?
 
-```
+- **Overview:** The project automates a book-by-book analysis of the Bible by constructing prompt sequences and calling an LLM wrapper to generate structured conversation outputs for each book.
+- **Main script:** `generate_book_analysis.py` builds OT and NT book lists (via `agentmake.plugins.uba.lib.BibleBooks`) and iterates each book to run analysis queries.
+- **Prompt flow:** For each book the script seeds a messages array then runs queries: introduce, outline, flow, context (OT/NT-specific), themes, keywords, theology, canon, application, and finally requests a consolidated answer.
+- **Agent calls:** The script uses `agentmake(...)` with `AGENTMAKE_CONFIG` to send prompts to the configured backend; streaming and terminal output are controlled there.
+- **Output:** Conversations are saved with `writeTextFile` under the language folder (for example, `eng/1.py`, `eng/40.py`). Existing files are skipped to avoid re-running analyses.
+- **Prerequisites:** Configure `agentmake` credentials/backend, ensure language folders (e.g., `eng/`) exist, and install required Python dependencies.
+- **Quick run:** Execute `python generate_book_analysis.py` to generate analyses; edit the `queries` dict or `AGENTMAKE_CONFIG` to customize prompts or model behavior.
+
+# Distribution Licence
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">Bible Book Studies</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://www.bibletools.app" property="cc:attributionName" rel="cc:attributionURL">Eliran Wong</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/eliranwong/BibleBookStudies" rel="dct:source">https://github.com/eliranwong/BibleBookStudies</a>.<br />Permissions beyond the scope of this license may be available at <a xmlns:cc="http://creativecommons.org/ns#" href="https://marvel.bible/contact/contactform.php" rel="cc:morePermissions">https://marvel.bible/contact/contactform.php</a>.
+
+# Published at:
+
+English version:
+
+https://biblemate.gospelchurch.uk/?d=true&s=true&l=3&bbt=NET&tbt=NET&tool=Analysis&bb=1&bc=1&bv=1&lang=eng
+
+Traditional Chinese:
+
+https://biblemate.gospelchurch.uk/?d=true&s=true&l=3&bbt=NET&tbt=NET&tool=Analysis&bb=1&bc=1&bv=1&lang=tc
+
+Simplified Chinese:
+
+https://biblemate.gospelchurch.uk/?d=true&s=true&l=3&bbt=NET&tbt=NET&tool=Analysis&bb=1&bc=1&bv=1&lang=sc
+
+# Related Projects
+
+This resource is built for BibleMate AI:
+
+https://github.com/eliranwong/biblemate
+
+https://github.com/eliranwong/biblemategui
+
+Analysis of Every Single Book in the Bible
+
+https://github.com/eliranwong/BibleBookStudies
+
+Summary of Every Single Chapter in the Bible
+
+https://github.com/eliranwong/BibleChapterSummaries
+
+Commentary of Every Single Verse in the Bible
+
+https://github.com/eliranwong/AI_Commentary
