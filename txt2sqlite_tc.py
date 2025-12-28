@@ -85,7 +85,7 @@ def get_contents(b, lang="eng"):
     contents = []
     conversation_file = os.path.join(lang, f"{b}.py")
     if os.path.isfile(conversation_file):
-        contents = [process_content(parser, i["content"]) for i in eval(readTextFile(conversation_file)) if i.get("role", "") == "assistant" and not i.get("content", "") == "好的！讓我們深入分析這本書。"]
+        contents = [process_content(parser, i["content"]) for i in eval(readTextFile(conversation_file)) if i.get("role", "") == "assistant" and not i.get("content", "") in ("好的！讓我們深入分析這本書。", "Sure! Let's dive into the analysis process.")]
     return contents
 
 if __name__ == '__main__':

@@ -76,7 +76,7 @@ for index, book in enumerate(NT_BOOKS):
     messages = [
         {"role": "system", "content": "You are a helpful assistant that provides detailed information about the books of the Bible."},
         {"role": "user", "content": f"Perform a comprehensive analysis of the book of {book} in the Bible."},
-        {"role": "assistant", "content": "Sure! Let's dive into the analysis process."},
+        {"role": "assistant", "content": "好的！讓我們深入分析這本書。"},
     ]
     for instruction, query in queries.items():
         print("Request:", query.format(book=book))
